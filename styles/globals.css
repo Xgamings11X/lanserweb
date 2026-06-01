@@ -1,0 +1,270 @@
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #f97316;
+  --orange-dark: #ea580c;
+  --orange-light: #fb923c;
+  --amber: #f59e0b;
+  --dark: #0a0a0f;
+  --dark-2: #111118;
+  --dark-3: #1a1a25;
+  --dark-4: #22222f;
+  --dark-5: #2a2a3a;
+  --border: rgba(249, 115, 22, 0.2);
+  --text-muted: #6b6b85;
+  --text-light: #a8a8c0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  color: #e8e8f0;
+  font-family: 'Exo 2', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ========================
+   CUSTOM SCROLLBAR
+======================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-2); }
+::-webkit-scrollbar-thumb { background: var(--orange-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* ========================
+   PARTICLE BACKGROUND
+======================== */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+}
+
+/* ========================
+   GRID OVERLAY
+======================== */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ========================
+   GLOW EFFECTS
+======================== */
+.glow-orange {
+  box-shadow: 0 0 20px rgba(249,115,22,0.3), 0 0 60px rgba(249,115,22,0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(249,115,22,0.5), 0 0 40px rgba(249,115,22,0.3);
+}
+
+.border-glow {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 1px rgba(249,115,22,0.1), inset 0 0 20px rgba(249,115,22,0.03);
+}
+
+/* ========================
+   FONT CLASSES
+======================== */
+.font-display { font-family: 'Cinzel Decorative', serif; }
+.font-ui { font-family: 'Rajdhani', sans-serif; letter-spacing: 0.05em; }
+.font-body { font-family: 'Exo 2', sans-serif; }
+
+/* ========================
+   CARD HOVER EFFECTS
+======================== */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(249,115,22,0.5);
+  box-shadow: 0 8px 30px rgba(249,115,22,0.15), 0 0 0 1px rgba(249,115,22,0.2);
+}
+
+/* ========================
+   BUTTON STYLES
+======================== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.4s;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  box-shadow: 0 0 25px rgba(249,115,22,0.5);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  box-shadow: 0 0 15px rgba(249,115,22,0.2);
+}
+
+/* ========================
+   BADGE COLORS
+======================== */
+.badge-orange { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
+.badge-red { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+.badge-purple { background: rgba(168,85,247,0.15); color: #a855f7; border: 1px solid rgba(168,85,247,0.3); }
+.badge-blue { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+.badge-green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.badge-yellow { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+
+/* ========================
+   FORM INPUTS
+======================== */
+.input-dark {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  color: #e8e8f0;
+  font-family: 'Exo 2', sans-serif;
+  transition: all 0.2s;
+}
+.input-dark:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+}
+.input-dark::placeholder { color: var(--text-muted); }
+
+/* ========================
+   LOADER
+======================== */
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--dark-4);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========================
+   MINECRAFT DIAMOND DECORATION
+======================== */
+.diamond-deco {
+  width: 8px; height: 8px;
+  background: var(--orange);
+  transform: rotate(45deg);
+  display: inline-block;
+  box-shadow: 0 0 8px var(--orange);
+}
+
+/* ========================
+   ANIMATIONS
+======================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(249,115,22,0.3); }
+  50% { box-shadow: 0 0 25px rgba(249,115,22,0.7), 0 0 50px rgba(249,115,22,0.3); }
+}
+
+.animate-fade-up { animation: fadeInUp 0.5s ease forwards; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* ========================
+   ANNOUNCEMENT BAR
+======================== */
+.announcement-bar {
+  background: linear-gradient(90deg, var(--orange-dark), var(--amber), var(--orange-dark));
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================
+   PRODUCT CARD RIBBON
+======================== */
+.ribbon {
+  position: absolute;
+  top: 12px; right: -4px;
+  padding: 3px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ribbon::after {
+  content: '';
+  position: absolute;
+  right: 0; bottom: -4px;
+  border: 2px solid transparent;
+  border-top-color: inherit;
+  border-right-color: transparent;
+  filter: brightness(0.5);
+}
